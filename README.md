@@ -71,7 +71,9 @@ nodes being offline for less than than maxAge days are considered "lost".
 # Configure Client History
 
 * configure the scripts in `py/`
-* call them regularly via crontab or something similar
+* call them regularly via crontab or something similar:
+
+Example: `/opt/meshviewer/py/client-history-complete.py < /var/www/meshviewer/json/nodes.json`
 
 # Building
 
