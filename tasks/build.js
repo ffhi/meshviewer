@@ -23,6 +23,25 @@ module.exports = function(grunt) {
         cwd: "bower_components/",
         dest: "build/vendor/"
       },
+      jquery: {
+        src: [ "jquery/dist/jquery.min.js",
+               "jquery/dist/jquery.min.map" ],
+        expand: true,
+        cwd: "bower_components/",
+        dest: "build/vendor/"
+      },
+      chartjs: {
+        src: [ "chartjs/Chart.min.js" ],
+        expand: true,
+        cwd: "bower_components/",
+        dest: "build/vendor/"
+      },
+      clientdiagram: {
+        src: [ "clientdiagram/*" ],
+        expand: true,
+        cwd: "js/",
+        dest: "build/vendor/"
+      },
       robotoSlab: {
         src: [ "fonts/*",
                "roboto-slab-fontface.css"

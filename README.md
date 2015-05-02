@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/tcatm/meshviewer.svg?branch=master)](https://travis-ci.org/tcatm/meshviewer)
-
-# Meshviewer
+# Meshviewer (with Client History)
 
 Meshviewer is a frontend for
 [ffmap-backend](https://github.com/ffnord/ffmap-backend).
@@ -66,6 +64,11 @@ Setting this to `false` will hide contact information for nodes.
 
 Nodes being online for less than maxAge days are considered "new". Likewise,
 nodes being offline for less than than maxAge days are considered "lost".
+
+# Configure Client History
+
+* configure the scripts in `py/`
+* call them regularly via crontab or something similar
 
 # Building
 

@@ -1,5 +1,9 @@
 # Change Log
 
+## v2.1 (fork)
+
+- Client history introduced
+
 ## v2
 
 ### General changes:
