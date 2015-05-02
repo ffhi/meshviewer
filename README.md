@@ -1,5 +1,7 @@
 # Meshviewer (with Client History)
 
+This fork adds client history diagrams to the node detail view.
+
 Meshviewer is a frontend for
 [ffmap-backend](https://github.com/ffnord/ffmap-backend).
 
@@ -8,6 +10,7 @@ Meshviewer is a frontend for
 
 # Screenshots
 
+![](doc/clienthistory.png?raw=true)
 ![](doc/mapview.png?raw=true)
 ![](doc/graphview.png?raw=true)
 ![](doc/allnodes.png?raw=true)
