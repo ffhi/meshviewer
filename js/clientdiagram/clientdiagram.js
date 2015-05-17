@@ -25,9 +25,10 @@ weekdays["Sun"] = "So";
 
 // try to get chart canvas
 var checkExist = setInterval(function() {
-    var canvas = $("#clientdiagram")[0];
-    if (canvas != null) {
-        clearInterval(checkExist);
+    var diagrams = $("#clientdiagram");
+    var canvas = diagrams[0];
+    if (canvas != null && !diagrams.hasClass("drawn" )) {
+	diagrams.addClass("drawn");
         var ctx = canvas.getContext("2d");
 
         // add client statistics
@@ -72,7 +73,6 @@ var checkExist = setInterval(function() {
                     value[1] = 0;
                     missing.push(index);
                 }
-		//alert(value[1]+": "+value[0]);
                 chart.addData([value[1]], value[0]);
              });
              // marking missing data red
@@ -82,5 +82,5 @@ var checkExist = setInterval(function() {
              chart.update();
         });
     }
-}, 200);
+}, 500);
 
