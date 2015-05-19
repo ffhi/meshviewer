@@ -42,11 +42,6 @@ module.exports = function(grunt) {
         cwd: "js/",
         dest: "build/vendor/"
       },
-      navbar: {
-        src: [ "navbar.css" ],
-        expand: true,
-        dest: "build/"
-      },
       robotoSlab: {
         src: [ "fonts/*",
                "roboto-slab-fontface.css"

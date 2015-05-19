@@ -2,6 +2,7 @@
 @import '_base';
 @import '_leaflet';
 @import '_leaflet.label';
+@import '_navbar';
 
 $minscreenwidth: 630pt;
 $sidebarwidth: 420pt;
@@ -30,7 +31,8 @@ $buttondistance: 12pt;
 .content {
   position: fixed;
   width: 100%;
-  height: 100vh;
+  height: calc(100% - 50px);
+  margin-top: 50px;
 }
 
 .tabs {
@@ -376,6 +378,7 @@ table {
     position: relative;
     width: auto;
     height: 60vh;
+    margin-top: 50px;
   }
 
   .sidebar {
