@@ -78,6 +78,7 @@ var checkExist = setInterval(function() {
              // marking missing data red
              $.each(missing, function(index, value) {
                  chart.datasets[0].points[value].fillColor = "#CC0000";
+                 chart.datasets[0].points[value].display = true;
              });
              chart.update();
         });

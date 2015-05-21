@@ -27,7 +27,10 @@ for id in clients.keys():
 # get client count
 for id, values in nodes.items():
     if id not in clients: clients[id] = []
-    clients[id].append((label, values['statistics']['clients']))
+    if 'uptime' in values['statistics']:
+        clients[id].append((label, values['statistics']['clients']))
+    else:
+        clients[id].append((label, -1))
     # ignore data older than 1 week
     if len(clients[id]) > LAST_WEEK: clients[id] = clients[id][-LAST_WEEK:]
 
