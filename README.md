@@ -68,12 +68,43 @@ Setting this to `false` will hide contact information for nodes.
 Nodes being online for less than maxAge days are considered "new". Likewise,
 nodes being offline for less than than maxAge days are considered "lost".
 
+## nodeInfos (array, optional)
+
+This option allows to show client statistics depending on following case-sensitive parameters:
+
+- `name` caption of statistics segment in infobox
+- `href` absolute or relative URL to statistics image
+- `thumbnail` absolute or relative URL to thumbnail image,
+  can be the same like `href`
+- `caption` is shown, if `type` is `link` (no thumbnail in infobox)
+
+To insert current node-id in either `href`, `thumbnail` or `caption`
+you can use the case-sensitive template string `{NODE_ID}`.
+
+Examples for `nodeInfos`:
+
+    "nodeInfos": [
+      { "name": "Clientstatistik"
+        "href": "nodes/{NODE_ID}.png",
+        "thumbnail": "nodes/{NODE_ID}.png",
+        "caption": "Knoten {NODE_ID}"
+      },
+      { "name": "Uptime",
+        "href": "nodes_uptime/{NODE_ID}.png",
+        "thumbnail": "nodes_uptime/{NODE_ID}.png",
+        "caption": "Knoten {NODE_ID}"
+      }
+    ]
+
+In order to have statistics images available, you have to run the backend with parameter `--with-rrd` or generate them in other ways.
+
 # Configure Client History
 
 * configure the scripts in `py/`
 * call them regularly via crontab or something similar:
 
 Example: `/opt/meshviewer/py/client-history-complete.py < /var/www/meshviewer/json/nodes.json`
+
 
 # Building
 
