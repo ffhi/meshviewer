@@ -37,22 +37,50 @@ if (canvas != null && canvas.className != "used") {
     $.getJSON( "json/clienthistory_complete.json", function(data) {
         // extract node id from url
         var node = window.location.hash.substring(4);
-        var missing = [];
-        $.each(data[node], function(index, value) {
-            if (index % 12 != 0) {
-                value[0] = "";
-            }
-             if (value[1] == -1) {
-                value[1] = 0;
-                missing.push(index);
-            }
-            chart.addData([value[1]], value[0]);
-        });
-        // marking missing data red
-        $.each(missing, function(index, value) {
-            chart.datasets[0].points[value].fillColor = "#CC0000";
-            chart.datasets[0].points[value].display = true;
-        });
-        chart.update();
+	var nodes = []
+	if (node != "") {
+		nodes.push(node);
+	} else if (window.location.hash == "#all") {
+		$.each(data, function(index, value) {
+			nodes.push(index);
+		});
+	} else {
+		$("body").prepend("Kein Knoten ausgewählt - ");
+	}
+
+	var summedNodes = {};
+
+	// sum up node values
+	$.each(nodes, function(i, node) {
+		$.each(data[node], function(k, timeClients) {
+			var time = timeClients[0];
+			var clients = timeClients[1];
+			if (time in summedNodes) {
+				if (clients > 0) summedNodes[time] += clients;
+			} else {
+				summedNodes[time] = clients;
+			}
+		});
+	});
+
+	var missing = [];
+	var i = 0;
+	$.each(summedNodes, function(time, clients) {
+		if (i % 12 != 0) {
+			time = "";
+		}
+		if (clients == -1) {
+			clients = 0;
+			missing.push(i);
+		}
+		chart.addData([clients], time);
+		i++;
+	});
+	  // marking missing data red
+	$.each(missing, function(index, value) {
+		chart.datasets[0].points[value].fillColor = "#CC0000";
+		chart.datasets[0].points[value].display = true;
+	});
+	chart.update();
     });
 }
